@@ -2,7 +2,7 @@ from flask import render_template, flash
 from flask_login import (current_user, logout_user)
 from functools import wraps
 from flask import g, request, redirect, url_for
-from app import SignUpForm, LoginForm
+from app import SignUpForm, LoginForm, JournalForm
 from .models import User, Journal
 from app import app, session,lm
 
@@ -106,5 +106,19 @@ def viewentries(id=None):
         })
     return render_template('viewentries.html', entries=entries)
 
-
+'''Code to add a new journal entry to database'''
+@app.route("/newjournal", methods=['POST', 'GET'])
+@login_required
+def newjournal():
+    form = JournalForm(request.form)
+    if request.method == 'POST' and form.validate():
+        new = Journal(form.body.data, form.tags.data, current_user_id)
+        print ("User id: "+ str(current_user_id))
+        session.add(new)
+        session.commit()
+        flash('Your Journal has been Created')
+        return redirect("viewentries/")
+    else:
+        flash_errors(form)
+    return render_template('newjournal.html', form = form)
 
