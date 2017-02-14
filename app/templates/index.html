@@ -7,7 +7,7 @@
 <!-- Mirrored from seantheme.com/color-admin-v1.8/admin/html/register_v3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Sep 2015 09:30:08 GMT -->
 <head>
 	<meta charset="utf-8" />
-	<title>Journal App | Login Page</title>
+	<title>Journal App | Register Page</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -56,32 +56,39 @@
                 <!-- end register-header -->
                 <!-- begin register-content -->
                 <div class="register-content">
-                    <form action="http://seantheme.com/color-admin-v1.8/admin/html/index.html" method="POST" class="margin-bottom-0">
+                    <form action="/signup" method="POST" class="margin-bottom-0">
+                        <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
                         <label class="control-label">Name</label>
                         <div class="row row-space-10">
                             <div class="col-md-6 m-b-15">
-                                <input type="text" class="form-control" placeholder="First name" />
+                                {{ form.firstname(class_ = "form-control", placeholder = "First Name") }}
                             </div>
                             <div class="col-md-6 m-b-15">
-                                <input type="text" class="form-control" placeholder="Last name" />
+                                {{ form.lastname(class_ = "form-control", placeholder = "Last Name") }}
                             </div>
                         </div>
                         <label class="control-label">Username</label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Username" />
+                                {{ form.username(class_ = "form-control", placeholder = "Username") }}
                             </div>
                         </div>
                         <label class="control-label">Email</label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Email address" />
+                                {{ form.email(class_ = "form-control", placeholder = "E-Mail") }}
                             </div>
                         </div>
                         <label class="control-label">Password</label>
                         <div class="row m-b-15">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Password" />
+                                {{ form.password(class_ = "form-control", placeholder = "Password") }}
+                            </div>
+                        </div>
+                        <label class="control-label">Re-Enter Password</label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                {{ form.password(class_ = "form-control", placeholder = "Confirm Password") }}
                             </div>
                         </div>
                         <div class="register-buttons">
@@ -131,3 +138,4 @@
 
 <!-- Mirrored from seantheme.com/color-admin-v1.8/admin/html/register_v3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Sep 2015 09:30:23 GMT -->
 </html>
+
