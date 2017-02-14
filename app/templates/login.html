@@ -48,7 +48,7 @@
             <!-- end brand -->
             <div class="login-content">
                 <form action="/login" method="POST" class="margin-bottom-0">
-                    <form>
+                    <input name = _csrf_token type = hidden value= " {{ csrf_token() }}">
                         <div class="form-group m-b-20">
                             {{ form.email(class_ = "form-control input-lg", placeholder = "E-Mail") }}
                         </div>
@@ -58,7 +58,6 @@
                         <div class="login-buttons">
                             <button type="submit" class="btn btn-success btn-block btn-lg">Log in</button>
                         </div>
-                    </form>
                 </form>
             </div>
         </div>
