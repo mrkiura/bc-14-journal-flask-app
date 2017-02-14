@@ -38,7 +38,6 @@ def index():
     else:
         flash_errors(form)
     return render_template('signup.html', form=form)
-    return render_template('signup.html')
 
 '''Flashing form errors'''
 def flash_errors(form):
@@ -117,8 +116,18 @@ def newjournal():
         session.add(new)
         session.commit()
         flash('Your Journal has been Created')
-        return redirect("viewentries/")
+        return redirect("/viewentries")
     else:
         flash_errors(form)
     return render_template('newjournal.html', form = form)
+
+@app.route('/search/', methods=['GET'])
+@login_required
+def search():
+    return render_template('search.html')
+
+@app.route('/edit')
+@login_required
+def edit():
+    return render_template('edit.html')
 
