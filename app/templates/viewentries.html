@@ -1,37 +1,3 @@
-{% extends "base.html" %}
-{% block navbar %}
-{% endblock%}
-{% block content %}
-
-<input name=_csrf_token type=hidden value="{{ csrf_token() }}">
-<div class="container">
-    <div class="row col-md-6 col-md-offset-2 custyle">
-    <table class="table table-striped custab">
-    <thead>
-    <a href="{{url_for('newjournal')}}" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new Journal</a>
-        <tr>
-            <th>ID</th>
-            <th>Journal</th>
-            <th>Tags</th>
-            <th class="text-center">Action</th>
-        </tr>
-    </thead>
-            {% for entry in entries %}
-            <tr>
-                <td> {{ entry.id }} </td>
-                <td> {{ entry.body }} </td>
-                <td> {{ entry.tags }}  </td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="{{ url_for('edit', id=entry.id)}}"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
-            </tr>
-
-            {% endfor %}
-    </table>
-    </div>
-</div>
-
-{% endblock %}
-
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
@@ -121,13 +87,13 @@
 					    </a>
 					</li>
 					<li class="has-sub">
-						<a href="{{ url_for('view_journals') }}">
+						<a href="{{ url_for('viewentries') }}">
 							<i class="fa fa-list"></i>
 							<span>All Journals</span>
 						</a>
 					</li>
 					<li class="has-sub">
-						<a href="{{ url_for('search_journal') }}">
+						<a href="{{ url_for('search') }}">
 						    <i class="fa fa-search"></i>
 						    <span>Search Journal</span>
 						</a>
@@ -169,7 +135,7 @@
 											<td>{{ entry.id }}</td>
 											<td>{{ entry.body }}l</td>
 											<td>{{ entry.tags }}</td>
-                                            <td class="text-center"><a class="btn btn-info" href="{{ url_for('Edit', id = entry.id) }}"><span class="glyphicon glyphicon-edit"></span></a> </td>
+                                            <td class="text-center"><a class="btn btn-info" href="{{ url_for('edit', id = entry.id) }}"><span class="glyphicon glyphicon-edit"></span></a> </td>
 										</tr>
 										{% endfor %}
 									</tbody>
