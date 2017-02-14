@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Mirrored from seantheme.com/color-admin-v1.8/admin/html/register_v3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Sep 2015 09:30:08 GMT -->
+<head>
+	<meta charset="utf-8" />
+	<title>Journal App | Register Page</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="{{ url_for('static', filename = 'plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename = 'plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename = 'plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename = 'css/animate.min.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename = 'css/style.min.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename = 'css/style-responsive.min.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename = 'css/theme/default.css') }}" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{{ url_for('static', filename = 'plugins/pace/pace.min.js') }}"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body class="pace-top bg-white">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+	    <!-- begin register -->
+        <div class="register register-with-news-feed">
+            <!-- begin news-feed -->
+            <div class="news-feed">
+                <div class="news-image">
+                    <img src="{{ url_for('static', filename = 'img/login-bg/bg-8.jpg') }}" alt="" />
+                </div>
+                <div class="news-caption">
+                    <h4 class="caption-title"><i class="fa fa-edit text-success"></i> Journal Flask App</h4>
+                </div>
+            </div>
+            <!-- end news-feed -->
+            <!-- begin right-content -->
+            <div class="right-content">
+                <!-- begin register-header -->
+                <h1 class="register-header">
+                    Sign Up
+                    <small>Create a journal Account</small>
+                </h1>
+                <!-- end register-header -->
+                <!-- begin register-content -->
+                <div class="register-content">
+                    <form action="/signup" method="POST" class="margin-bottom-0">
+                        <input name =_csrf_token type=hidden value="{{ csrf_token() }}">
+                        <label class="control-label">Name</label>
+                        <div class="row row-space-10">
+                            <div class="col-md-6 m-b-15">
+                                {{ form.firstname(class_ = "form-control", placeholder = "First Name") }}
+                            </div>
+                            <div class="col-md-6 m-b-15">
+                                {{ form.lastname(class_ = "form-control", placeholder = "Last Name") }}
+                            </div>
+                        </div>
+                        <label class="control-label">Username</label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                {{ form.username(class_ = "form-control", placeholder = "Username") }}
+                            </div>
+                        </div>
+                        <label class="control-label">Email</label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                {{ form.email(class_ = "form-control", placeholder = "E-Mail") }}
+                            </div>
+                        </div>
+                        <label class="control-label">Password</label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                {{ form.password(class_ = "form-control", placeholder = "Password") }}
+                            </div>
+                        </div>
+                        <label class="control-label">Re-Enter Password</label>
+                        <div class="row m-b-15">
+                            <div class="col-md-12">
+                                {{ form.password(class_ = "form-control", placeholder = "Confirm Password") }}
+                            </div>
+                        </div>
+                        <div class="register-buttons">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                        </div>
+                        <div class="m-t-20 m-b-40 p-b-40">
+                            Already a member? Click <a href="{{ url_for('login') }}">here</a> to login.
+                        </div>
+                    </form>
+                </div>
+                <!-- end register-content -->
+            </div>
+            <!-- end right-content -->
+        </div>
+        <!-- end register -->
+
+        <!-- begin theme-panel -->
+
+	</div>
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{{ url_for('static', filename = 'plugins/jquery/jquery-1.9.1.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'plugins/jquery/jquery-migrate-1.1.0.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'plugins/jquery-ui/ui/minified/jquery-ui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+	<!--[if lt IE 9]>
+		<script src="{{ url_for('static', filename = 'crossbrowserjs/html5shiv.js') }}"></script>
+		<script src="{{ url_for('static', filename = 'crossbrowserjs/respond.min.js') }}"></script>
+		<script src="{{ url_for('static', filename = 'crossbrowserjs/excanvas.min.js') }}"></script>
+	<![endif]-->
+	<script src="{{ url_for('static', filename = 'plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'plugins/jquery-cookie/jquery.cookie.js') }}"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{{ url_for('static', filename = 'js/apps.min.js') }}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+		});
+	</script>
+
+</body>
+
+<!-- Mirrored from seantheme.com/color-admin-v1.8/admin/html/register_v3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Sep 2015 09:30:23 GMT -->
+</html>
+
