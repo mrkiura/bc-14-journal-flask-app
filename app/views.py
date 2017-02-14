@@ -3,7 +3,7 @@ from flask_login import (current_user, logout_user)
 from functools import wraps
 from flask import g, request, redirect, url_for
 from app import SignUpForm, LoginForm
-from .models import User
+from .models import User, Journal
 from app import app, session,lm
 
 current_user_id = -1
@@ -86,3 +86,25 @@ def signup():
     else:
         flash_errors(form)
     return render_template('signup.html', form=form)
+
+'''View all journal entries code'''
+@app.route("/viewentries/<id>", methods=['GET'])
+@app.route("/viewentries/", methods=['GET'])
+@login_required
+def viewentries(id=None):
+    entry_rows = None
+    if id is not None:
+        entry_rows = session.query(Journal).filter(Journal.id==id)
+    else:
+        entry_rows = session.query(Journal).filter_by(user_id=current_user_id)
+    entries = []
+    for entry in entry_rows:
+        entries.append({
+            "id": entry.id,
+            "body": entry.body,
+            "tags": entry.tags
+        })
+    return render_template('viewentries.html', entries=entries)
+
+
+
