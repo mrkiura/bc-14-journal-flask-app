@@ -2,7 +2,7 @@ from flask import render_template, flash
 from flask_login import (current_user, logout_user)
 from functools import wraps
 from flask import g, request, redirect, url_for
-from app import SignUpForm, LoginForm, JournalForm
+from app import SignUpForm, LoginForm, JournalForm, EditForm, SearchForm
 from .models import User, Journal
 from app import app, session,lm
 
@@ -123,10 +123,12 @@ def newjournal():
 @app.route('/search/', methods=['GET'])
 @login_required
 def search():
-    return render_template('search.html')
+    form = SearchForm(request.form)
+    return render_template('search.html', form = form)
 
 @app.route('/edit')
 @login_required
 def edit():
-    return render_template('edit.html')
+    form = EditForm(request.form)
+    return render_template('edit.html', form = form)
 
