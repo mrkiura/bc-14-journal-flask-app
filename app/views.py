@@ -91,7 +91,6 @@ def signup():
 @app.route("/viewentries/", methods=['GET'])
 @login_required
 def viewentries(id=None):
-    entry_rows = None
     if id is not None:
         entry_rows = session.query(Journal).filter(Journal.id==id)
     else:
